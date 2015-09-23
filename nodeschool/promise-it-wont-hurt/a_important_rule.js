@@ -9,15 +9,11 @@ function throwMyGod () {
   throw new Error("OH NOES");
 };
 
-q.fcall(iterate, 1)
-.then(iterate)
-.then(iterate)
-.then(iterate)
-.then(iterate)
-.then(throwMyGod)
-.then(iterate)
-.then(iterate)
-.then(iterate)
-.then(iterate)
-.then(iterate)
-.then(null, console.log);
+var promise = q.fcall(iterate, 1)
+for (var i = 1; i < 9; i++) {
+	promise = promise.then(iterate)
+	if (i == 4) {
+		promise = promise.then(throwMyGod)
+	}
+}
+promise.then(null, console.log);
