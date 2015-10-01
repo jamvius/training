@@ -1,0 +1,2 @@
+git reset HEAD -- . : resetear la staging area recursivamente
+git reset HEAD <file>: elimina un archivo de la staging zone
