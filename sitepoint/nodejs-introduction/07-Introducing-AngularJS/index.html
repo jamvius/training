@@ -1,0 +1,14 @@
+<!doctype html>
+<html ng-app>
+	<head>
+		<title>AngularJS demo</title>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/AppController.js"></script>
+	</head>
+	<body ng-controller="AppController">
+		{{ sum }}<br/><br/>
+		<input type="text" ng-model="username" /><br/>
+		{{username}}<br/><br/>
+		<button ng-click="sayHello()">Say Hello!</button>
+	</body>
+</html>
