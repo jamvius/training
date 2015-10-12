@@ -15,6 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('redirector'));
+// con Express mapeamos la carpeta public a la raiz del servidor
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
@@ -31,6 +32,7 @@ app.get('/:alias', function (req, res) {
 var server = http.createServer(app);
 server.listen(3000);
 
+// El socket server esta siempre conectado a un http server
 var io = socket.listen(server);
 
 io.sockets.on('connection', function (socket) {
@@ -40,6 +42,7 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('addMapping', function (mapping) {
     mappings.create(mapping.alias, mapping.url, function () {
+      // Cuando recibimos un mensaje de addMapping devolvemos un mensaje de newMapping para actualizar
       io.sockets.emit('newMapping', mapping);
     });
   });
