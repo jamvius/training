@@ -18,9 +18,11 @@ function setupAuth(User, app) {
     {
       clientID: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-      callbackURL: 'http://localhost:3000/auth/facebook/callback'
+      callbackURL: 'http://localhost:3000/auth/facebook/callback',
+      profileFields: ['id', 'emails', 'name']
     },
     function(accessToken, refreshToken, profile, done) {
+      console.log(profile);
       if (!profile.emails || !profile.emails.length) {
         return done('No emails associated with this account!');
       }
