@@ -167,6 +167,7 @@ describe('User Checkout', function() {
   });
 
   it('can check out', function(done) {
+    this.timeout(5000);
     var url = URL_ROOT + '/checkout';
 
     // Set up data
