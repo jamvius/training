@@ -20,3 +20,7 @@ wagner.factory('Category', function() {
  }
 
  Donde Category es el nombre que se ha añadido con wagner.factory
+
+
+
+ browserify: Convierte el codigo para permitir usar require y module.exports en navegadores
